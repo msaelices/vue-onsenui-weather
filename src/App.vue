@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import HomePage from './components/HomePage'
-import MenuPage from './components/MenuPage'
+import HomePage from './components/HomePage.vue'
+import MenuPage from './components/MenuPage.vue'
 
 export default {
   name: 'app',
