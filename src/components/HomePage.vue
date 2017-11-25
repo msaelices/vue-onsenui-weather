@@ -48,7 +48,7 @@ export default {
   name: 'home',
   data () {
     return {
-      msg: 'Welcome',
+      msg: 'Onsen Weather',
       essentialLinks: [
         {
           label: 'Core Docs',
