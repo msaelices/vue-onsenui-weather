@@ -35,15 +35,24 @@ export default new Vuex.Store({
     forecast: {
       namespaced: true,
       state: {
-        locations: [],
+        locations: {},
       },
       mutations: {
-        ADD_LOCATION (state, location) {
-          state.locations = [location, ...state.locations];
+        ADD_LOCATION (state, payload) {
+          const location = Object.assign({isInvalid: false, isFetching: false}, payload);
+          state.locations = {[location.name]: location, ...state.locations};
         },
       },
       actions: {
         addlocation ({commit, state}, name) {
+          if (name in state.locations) {
+            this._vm.$ons.notification.toast({
+              message: `${name} is already in your locations`,
+              buttonLabel: 'Dismiss',
+              timeout: 5000
+            });
+            return;
+          }
           queryWeather(name)
             .catch((err) => {
               this._vm.$ons.notification.toast({
