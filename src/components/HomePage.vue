@@ -34,6 +34,13 @@ export default {
       return this.$store.state.forecast.locations;
     },
   },
+  mounted() {
+    // TODO: Find out a better way to do refresh the locations
+    // computed value from the persisted locations in the store
+    setTimeout(() => {
+      this.$forceUpdate();
+    }, 100);
+  },
   methods: {
     goTo (url) {
       window.open(url, '_blank')
