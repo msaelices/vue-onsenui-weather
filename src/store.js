@@ -46,13 +46,21 @@ export default new Vuex.Store({
         addlocation ({commit, state}, name) {
           queryWeather(name)
             .catch((err) => {
-              this.$ons.notification.toast({
-                message: 'Error',
+              this._vm.$ons.notification.toast({
+                message: `Error fetching ${name} forecast`,
                 buttonLabel: 'Dismiss',
                 timeout: 5000
               });
             })
-            .then((data) => commit('ADD_LOCATION', data));
+            .then((data) => {
+              commit('ADD_LOCATION', data);
+
+              this._vm.$ons.notification.toast({
+                message: `${name} added successfully`,
+                buttonLabel: 'Dismiss',
+                timeout: 5000
+              });
+            });
         }
       },
     }
