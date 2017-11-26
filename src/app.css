@@ -5,3 +5,7 @@
 @import url('../node_modules/onsenui/css/font_awesome/css/font-awesome.min.css');
 @import url('../node_modules/onsenui/css/material-design-iconic-font/css/material-design-iconic-font.min.css');
 @import url('../node_modules/onsenui/css-components-src/src/iphonex-support/index.css');
+
+.ons-icon.left {
+  margin-right: 10px;
+}

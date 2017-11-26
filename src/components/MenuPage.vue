@@ -7,9 +7,9 @@
 
     <v-ons-list-title>MENU</v-ons-list-title>
     <v-ons-list>
-      <v-ons-list-item modifier="chevron" v-for="item in essentialLinks" @click="goTo(item.link)" :key="item.link">
-        <div class="left"><v-ons-icon fixed-width :icon="item.icon"></v-ons-icon></div>
-        <div class="center">{{ item.label }}</div>
+      <v-ons-list-item v-for="item in menuItems" @click="goTo(item.page)" :key="item.link">
+        <v-ons-icon fixed-width :icon="item.icon" class="left"></v-ons-icon>
+        {{ item.label }}
       </v-ons-list-item>
     </v-ons-list>
   </v-ons-page>
@@ -20,38 +20,23 @@ export default {
   name: 'menu',
   data () {
     return {
-      essentialLinks: [
+      menuItems: [
         {
-          label: 'Docs',
-          link: 'https://onsen.io/v2/docs/guide/vue/',
-          icon: 'fa-book'
+          label: 'Add location',
+          icon: 'ion-plus',
+          page: null
         },
         {
-          label: 'Gitter Chat',
-          link: 'https://gitter.im/OnsenUI/OnsenUI',
-          icon: 'fa-commenting'
+          label: 'Settings',
+          icon: 'ion-gear-b',
+          page: null
         },
-        {
-          label: 'Forum',
-          link: 'https://community.onsen.io',
-          icon: 'ion-chatboxes'
-        },
-        {
-          label: 'Twitter',
-          link: 'https://twitter.com/Onsen_UI',
-          icon: 'fa-twitter'
-        },
-        {
-          label: 'Playground',
-          link: 'https://tutorial.onsen.io/',
-          icon: 'fa-graduation-cap'
-        }
       ]
     }
   },
   methods: {
-    goTo (url) {
-      window.open(url, '_blank')
+    goTo (page) {
+      console.log(`go to page ${page}`);
     }
   }
 }
