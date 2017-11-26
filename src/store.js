@@ -38,13 +38,23 @@ export default new Vuex.Store({
         locations: {},
       },
       mutations: {
-        ADD_LOCATION (state, payload) {
-          const location = Object.assign({isInvalid: false, isFetching: false}, payload);
-          state.locations = {[location.name]: location, ...state.locations};
+        SET_WEATHER (state, payload) {
+          const location = Object.assign(
+            {isInvalid: false, isFetching: false},
+            payload);
+          state.locations = { ...state.locations, [location.name]: location};
+        },
+        ADD_LOCATION (state, name) {
+          const location = {
+            isInvalid: false,
+            isFetching: true,
+            name: name,
+          };
+          state.locations = {[name]: location, ...state.locations};
         },
       },
       actions: {
-        addlocation ({commit, state}, name) {
+        addlocation ({commit, dispatch, state}, name) {
           if (name in state.locations) {
             this._vm.$ons.notification.toast({
               message: `${name} is already in your locations`,
@@ -53,6 +63,12 @@ export default new Vuex.Store({
             });
             return;
           }
+          // add the location before fetching the weather
+          commit('ADD_LOCATION', name);
+          // fetch location weather
+          dispatch('fetchweather', name);
+        },
+        fetchweather ({commit, state}, name) {
           queryWeather(name)
             .catch((err) => {
               console.error(err.stack);
@@ -63,13 +79,7 @@ export default new Vuex.Store({
               });
             })
             .then((data) => {
-              commit('ADD_LOCATION', data);
-
-              this._vm.$ons.notification.toast({
-                message: `${name} added successfully`,
-                buttonLabel: 'Dismiss',
-                timeout: 5000
-              });
+              commit('SET_WEATHER', data);
             });
         }
       },

@@ -84,7 +84,7 @@ export default {
       return weatherCodeToColor(location.icon);
     },
     fetchWeather (location) {
-      console.log('Fetching Weather...');
+      this.$store.dispatch('forecast/fetchweather', location.name);
     },
     removeLocation (location) {
       console.log('Removing location...');
