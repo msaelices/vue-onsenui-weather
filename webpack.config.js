@@ -57,7 +57,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
+        use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
             {
@@ -76,7 +76,7 @@ module.exports = {
               }
             }
           ]
-        })
+        }))
       }
     ]
   },
@@ -85,6 +85,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
+    new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([{
       from: 'static/'
     }])
