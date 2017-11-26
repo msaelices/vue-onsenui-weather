@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { queryWeather } from './api';
+import { queryWeather } from '~/api';
 
 Vue.use(Vuex)
 
