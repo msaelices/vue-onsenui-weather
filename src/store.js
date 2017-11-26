@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import { queryWeather } from './api';
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -17,8 +19,32 @@ export default new Vuex.Store({
           } else {
             state.open = !state.open
           }
+        },
+      },
+    },
+    forecast: {
+      namespaced: true,
+      state: {
+        locations: [],
+      },
+      mutations: {
+        ADD_LOCATION (state, location) {
+          state.locations = [location, ...state.locations];
+        },
+      },
+      actions: {
+        addlocation ({commit, state}, name) {
+          queryWeather(name)
+            .catch((err) => {
+              this.$ons.notification.toast({
+                message: 'Error',
+                buttonLabel: 'Dismiss',
+                timeout: 5000
+              });
+            })
+            .then((data) => commit('ADD_LOCATION', data));
         }
-      }
+      },
     }
   }
 })

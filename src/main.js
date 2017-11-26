@@ -1,5 +1,6 @@
 import 'onsenui/css/onsenui-core.min.css'; // Onsen UI basic CSS
 import './app.css'
+import './assets/icons/css/weather-icons.css';
 
 import Vue from 'vue'
 import VueOnsen from 'vue-onsenui'

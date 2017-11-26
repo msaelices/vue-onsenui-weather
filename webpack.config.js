@@ -16,7 +16,7 @@ var browserTargets = [
 
 var babelOptions = {
   babelrc: false,
-  presets: [ ['env', { browsers: browserTargets }] ]
+  presets: [ 'stage-2', ['env', { browsers: browserTargets }] ]
 };
 
 module.exports = {
