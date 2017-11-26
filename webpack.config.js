@@ -14,11 +14,6 @@ var browserTargets = [
   'Opera 12.1'
 ];
 
-var babelOptions = {
-  babelrc: false,
-  presets: [ 'stage-2', ['env', { browsers: browserTargets }] ]
-};
-
 module.exports = {
   watch: process.env.WEBPACK_WATCH === 'true',
   entry: './src/main.js',
@@ -36,7 +31,6 @@ module.exports = {
           loaders: {
             js: {
               loader: 'babel-loader',
-              options: babelOptions
             }
           }
           // other vue-loader options go here
@@ -46,7 +40,6 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        options: babelOptions
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,

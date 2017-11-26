@@ -8,7 +8,11 @@
     }],
     "stage-2"
   ],
-  "plugins": ["transform-runtime"],
+  "plugins": [
+    ["babel-plugin-root-import", {
+      "rootPathSuffix": "src"
+    }]
+  ],
   "env": {
     "test": {
       "presets": ["env", "stage-2"],
