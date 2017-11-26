@@ -10,10 +10,39 @@
     </v-ons-toolbar>
 
     <v-ons-list>
-      <v-ons-list-item v-for="location in locations" @click="goTo(location)" :key="location.id">
-        <div class="left"></div>
-        <div class="center">{{ location.name }}</div>
-        <div class="right"><v-ons-icon icon="fa-external-link"></v-ons-icon></div>
+      <v-ons-list-item
+        v-for="location in locations"
+        @click="goTo(location)"
+        :key="location.id"
+        tappable>
+        <div class="left">
+          <div class="icon" :style="'background-color:' + getIconColor(location)">
+            <i class="wi" :class="'wi-owm-' + location.icon"></i>
+          </div>
+        </div>
+        <div class="center">
+          <div class="list-item__title">
+            {{ location.name }}
+          </div>
+          <div class="list-item__subtitle">
+            {{ location.subtitle }}
+          </div>
+        </div>
+        <div class="right buttons">
+          <div @click.stop="fetchWeather(location)">
+            <v-ons-icon
+              icon="refresh"
+              class="refresh-button"
+              :spin="location.isFetching"
+            ></v-ons-icon>
+          </div>
+          <div @click.stop="removeLocation(location)">
+            <v-ons-icon
+              icon="trash"
+              class="remove-button"
+            ></v-ons-icon>
+          </div>
+        </div>
       </v-ons-list-item>
     </v-ons-list>
 
@@ -27,6 +56,9 @@
 </template>
 
 <script>
+
+import { weatherCodeToColor } from '~/util';
+
 export default {
   name: 'home',
   computed: {
@@ -47,7 +79,16 @@ export default {
     },
     addLocation(name) {
       this.$store.dispatch('forecast/addlocation', name);
-    }
+    },
+    getIconColor(location) {
+      return weatherCodeToColor(location.icon);
+    },
+    fetchWeather(location) {
+      console.log('Fetching Weather...');
+    },
+    removeLocation(location) {
+      console.log('Removing location...');
+    },
   }
 }
 </script>
@@ -58,23 +99,26 @@ export default {
   text-align: center;
 }
 
-img {
-  max-width: 300px;
-}
-
-ons-list-title {
-  text-transform: none;
-}
-
-ons-list-title:not(:first-of-type) {
-  margin-top: 30px;
-}
-
-ons-card {
+.icon {
+  color: #fff;
   text-align: center;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 6px;
+  font-size: 16px;
 }
 
-ons-list-item, ons-card {
-  cursor: pointer;
+.buttons {
+  fontSize: 20px;
+  color: #cacaca;
+}
+
+.refresh-button {
+  margin: 0 25px 0 0;
+}
+
+.remove-button {
+  margin: 0 10px 0 0;
 }
 </style>
