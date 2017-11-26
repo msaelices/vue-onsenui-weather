@@ -55,6 +55,7 @@ export default new Vuex.Store({
           }
           queryWeather(name)
             .catch((err) => {
+              console.error(err.stack);
               this._vm.$ons.notification.toast({
                 message: `Error fetching ${name} forecast`,
                 buttonLabel: 'Dismiss',

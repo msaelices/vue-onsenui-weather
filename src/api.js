@@ -17,14 +17,14 @@ const apiCall = (url) => {
   return fetch(url)
     .then(response => {
       if (response.status >= 400) {
-        return Promise.reject('Invalid response');
+        return Promise.reject(new Error('Invalid response'));
       }
 
       return response.json();
     })
     .then(json => {
       if (parseInt(json.cod) !== 200) {
-        return Promise.reject('Invalid response');
+        return Promise.reject(new Error('Invalid response'));
       }
 
       return json;

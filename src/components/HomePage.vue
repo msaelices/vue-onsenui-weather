@@ -62,11 +62,11 @@ import { weatherCodeToColor } from '~/util';
 export default {
   name: 'home',
   computed: {
-    locations() {
+    locations () {
       return this.$store.state.forecast.locations;
     },
   },
-  mounted() {
+  mounted () {
     // TODO: Find out a better way to do refresh the locations
     // computed value from the persisted locations in the store
     setTimeout(() => {
@@ -77,16 +77,16 @@ export default {
     goTo (url) {
       window.open(url, '_blank')
     },
-    addLocation(name) {
+    addLocation (name) {
       this.$store.dispatch('forecast/addlocation', name);
     },
-    getIconColor(location) {
+    getIconColor (location) {
       return weatherCodeToColor(location.icon);
     },
-    fetchWeather(location) {
+    fetchWeather (location) {
       console.log('Fetching Weather...');
     },
-    removeLocation(location) {
+    removeLocation (location) {
       console.log('Removing location...');
     },
   }
