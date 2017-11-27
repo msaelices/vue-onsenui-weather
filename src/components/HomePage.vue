@@ -26,6 +26,12 @@
           </div>
           <div class="list-item__subtitle">
             {{ location.subtitle }}
+            <span v-if="location.isFetching">
+              Fetching data...
+            </span>
+            <span v-else-if="location.isInvalid" class="error">
+              Unable to fetch data!
+            </span>
           </div>
         </div>
         <div class="right buttons">
@@ -120,5 +126,9 @@ export default {
 
 .remove-button {
   margin: 0 10px 0 0;
+}
+
+.error {
+  color: red;
 }
 </style>

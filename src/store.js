@@ -38,6 +38,17 @@ export default new Vuex.Store({
         locations: {},
       },
       mutations: {
+        SET_FETCHING (state, name) {
+          let location = state.locations[name];
+          location.isFetching = true;
+          state.locations = { ...state.locations, [location.name]: location};
+        },
+        SET_INVALID (state, name) {
+          let location = state.locations[name];
+          location.isInvalid = true;
+          location.isFetching = false;
+          state.locations = { ...state.locations, [location.name]: location};
+        },
         SET_WEATHER (state, payload) {
           const location = Object.assign(
             {isInvalid: false, isFetching: false},
@@ -69,9 +80,13 @@ export default new Vuex.Store({
           dispatch('fetchweather', name);
         },
         fetchweather ({commit, state}, name) {
+          commit('SET_FETCHING', name);
+
           queryWeather(name)
             .catch((err) => {
+              commit('SET_INVALID', name);
               console.error(err.stack);
+
               this._vm.$ons.notification.toast({
                 message: `Error fetching ${name} forecast`,
                 buttonLabel: 'Dismiss',
@@ -79,7 +94,9 @@ export default new Vuex.Store({
               });
             })
             .then((data) => {
-              commit('SET_WEATHER', data);
+              if (data) {
+                commit('SET_WEATHER', data);
+              }
             });
         }
       },
