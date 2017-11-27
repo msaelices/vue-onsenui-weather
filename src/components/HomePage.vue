@@ -32,6 +32,9 @@
             <span v-else-if="location.isInvalid" class="error">
               Unable to fetch data!
             </span>
+            <span v-else>
+              &nbsp;{{ location.temperature }}&deg;C&nbsp;{{ location.humidity }}%
+            </span>
           </div>
         </div>
         <div class="right buttons">
