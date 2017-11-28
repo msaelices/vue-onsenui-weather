@@ -18,7 +18,7 @@
 <script>
 
 export default {
-  name: 'menu',
+  name: 'menu-page',
   data () {
     return {
       menuItems: [

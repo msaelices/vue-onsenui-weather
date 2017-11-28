@@ -4,16 +4,26 @@ import '~/assets/icons/css/weather-icons.css';
 
 import Vue from 'vue'
 import VueOnsen from 'vue-onsenui'
+
+import router from '~/router'
 import store from '~/store'
 import App from '~/App.vue'
+import { WeatherPage, MenuPage, HomePage, WeatherIcon } from '~/components'
 
 Vue.config.productionTip = false
 
 Vue.use(VueOnsen)
 
+Object.values([
+  WeatherPage,
+  MenuPage,
+  HomePage,
+  WeatherIcon]).forEach(c => Vue.component(c.name, c));
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  router,
   store,
   template: '<App/>',
   components: { App }

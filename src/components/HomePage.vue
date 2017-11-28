@@ -16,9 +16,8 @@
         :key="location.id"
         tappable>
         <div class="left">
-          <div class="icon" :style="'background-color:' + getIconColor(location)">
-            <i class="wi" :class="'wi-owm-' + location.icon"></i>
-          </div>
+          <weather-icon :location="location">
+          </weather-icon>
         </div>
         <div class="center">
           <div class="list-item__title">
@@ -65,9 +64,6 @@
 </template>
 
 <script>
-
-import { weatherCodeToColor } from '~/util';
-
 export default {
   name: 'home',
   computed: {
@@ -83,14 +79,14 @@ export default {
     }, 100);
   },
   methods: {
-    goTo (url) {
-      window.open(url, '_blank')
+    goTo (location) {
+      this.$router.push({
+        name: 'Weather',
+        params: {location: location}},
+      );
     },
     addLocation (name) {
       this.$store.dispatch('forecast/addlocation', name);
-    },
-    getIconColor (location) {
-      return weatherCodeToColor(location.icon);
     },
     fetchWeather (location) {
       this.$store.dispatch('forecast/fetchweather', location.name);
@@ -98,7 +94,7 @@ export default {
     removeLocation (location) {
       console.log('Removing location...');
     },
-  }
+  },
 }
 </script>
 
@@ -106,16 +102,6 @@ export default {
 <style scoped>
 .header {
   text-align: center;
-}
-
-.icon {
-  color: #fff;
-  text-align: center;
-  width: 36px;
-  height: 36px;
-  line-height: 36px;
-  border-radius: 6px;
-  font-size: 16px;
 }
 
 .buttons {

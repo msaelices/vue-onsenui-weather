@@ -17,6 +17,35 @@ const vuexLocalStorage = new VuexPersist({
 
 export default new Vuex.Store({
   modules: {
+    navigator: {
+      strict: true,
+      namespaced: true,
+      state: {
+        stack: [],
+        options: {}
+      },
+      mutations: {
+        PUSH (state, page) {
+          state.stack.push(page);
+        },
+        POP (state) {
+          if (state.stack.length > 1) {
+            state.stack.pop();
+          }
+        },
+        REPLACE (state, page) {
+          state.stack.pop();
+          state.stack.push(page);
+        },
+        RESET (state, pageStack) {
+          state.stack = pageStack || [state.stack[0]];
+        },
+        OPTIONS (state, newOptions = {}) {
+          state.options = newOptions;
+        },
+      },
+    },
+
     splitter: {
       namespaced: true,
       state: {
