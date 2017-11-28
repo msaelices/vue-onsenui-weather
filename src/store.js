@@ -92,6 +92,13 @@ export default new Vuex.Store({
           };
           state.locations = {[name]: location, ...state.locations};
         },
+        REMOVE_LOCATION (state, name) {
+          // we cannot use delete state.locations[name]
+          // because of a JS limitation, Vue does not know that
+          // the state.locations is mutated and the view does not get
+          // refreshed
+          Vue.delete(state.locations, name);
+        },
       },
       actions: {
         addlocation ({commit, dispatch, state}, name) {
@@ -107,6 +114,14 @@ export default new Vuex.Store({
           commit('ADD_LOCATION', name);
           // fetch location weather
           dispatch('fetchweather', name);
+        },
+        removelocation({commit, state}, name) {
+          commit('REMOVE_LOCATION', name);
+          this._vm.$ons.notification.toast({
+            message: `${name} has been removed from your locations`,
+            buttonLabel: 'Dismiss',
+            timeout: 5000
+          });
         },
         fetchweather ({commit, state}, name) {
           commit('SET_FETCHING', name);
@@ -127,7 +142,7 @@ export default new Vuex.Store({
                 commit('SET_WEATHER', data);
               }
             });
-        }
+        },
       },
     }
   },

@@ -105,7 +105,7 @@ export default {
       this.$store.dispatch('forecast/fetchweather', location.name);
     },
     removeLocation (location) {
-      console.log('Removing location...');
+      this.$store.dispatch('forecast/removelocation', location.name);
     },
   },
 }
