@@ -22,7 +22,7 @@
 export default {
   name: 'app',
   computed: {
-    pageStack() {
+    pageStack () {
       return this.$store.state.navigator.stack;
     },
     menuIsOpen: {
@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     /* Override default pop behavior and delegate it to the router */
-    goBack() {
+    goBack () {
       // Go to the parent route component
       this.$router.push({ name: this.$route.matched[this.$route.matched.length - 2].name });
     }

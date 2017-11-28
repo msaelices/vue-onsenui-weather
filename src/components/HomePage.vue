@@ -85,7 +85,7 @@ export default {
         params: {location: location}},
       );
     },
-    addRandomLocation() {
+    addRandomLocation () {
       const locations = [
         'San Fernando',
         'Tokyo',
