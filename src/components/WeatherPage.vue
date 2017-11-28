@@ -18,7 +18,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'weather',
   computed: {
@@ -26,10 +25,6 @@ export default {
       return this.$route.params.location;
     }
   },
-  mounted () {
-  },
-  methods: {
-  }
 }
 </script>
 

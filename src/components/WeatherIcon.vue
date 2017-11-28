@@ -1,5 +1,4 @@
 <template>
-
   <div class="icon" :style="'background-color:' + getIconColor(location)">
     <i class="wi" :class="'wi-owm-' + location.icon"></i>
   </div>
