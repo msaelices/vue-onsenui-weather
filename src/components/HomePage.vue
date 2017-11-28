@@ -56,7 +56,7 @@
 
     <v-ons-fab
       position="bottom right"
-      @click="addLocation('San Fernando')"
+      @click="addRandomLocation('San Fernando')"
     >
       <v-ons-icon icon="md-plus"></v-ons-icon>
     </v-ons-fab>
@@ -84,6 +84,19 @@ export default {
         name: 'Weather',
         params: {location: location}},
       );
+    },
+    addRandomLocation() {
+      const locations = [
+        'San Fernando',
+        'Tokyo',
+        'New York',
+        'Sevilla',
+        'Paris',
+        'Roma',
+        'Qwerty',  // non-existing location
+      ];
+      const location = locations[Math.floor(Math.random() * locations.length)];
+      this.addLocation(location);
     },
     addLocation (name) {
       this.$store.dispatch('forecast/addlocation', name);
