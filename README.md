@@ -18,4 +18,18 @@ yarn build
 yarn lint
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Run on Android
+
+Install JDK 1.8
+
+Install Android SDK from https://developer.android.com/studio/index.html
+
+Choose some directory in your home, like `$HOME/Android/Sdk`
+
+Plug Android device using USB, enabling USB debugging previously. See https://developer.android.com/studio/debug/dev-options.html
+
+``` bash
+cordova platform add android
+yarn build
+cordova run android
+```
