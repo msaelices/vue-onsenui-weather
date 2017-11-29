@@ -43,20 +43,20 @@ export default {
     }
   },
   methods: {
-    showDialog() {
+    showDialog () {
       this.dialogVisible = true;
     },
-    hideDialog() {
+    hideDialog () {
       this.dialogVisible = false;
     },
-    onOk() {
+    onOk () {
       if (this.locationName) {
         this.$store.dispatch('forecast/addlocation', this.locationName);
         this.locationName = '';
       }
       this.hideDialog();
     },
-    onCancel() {
+    onCancel () {
       this.hideDialog();
     },
   }

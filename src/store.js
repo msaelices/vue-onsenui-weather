@@ -115,7 +115,7 @@ export default new Vuex.Store({
           // fetch location weather
           dispatch('fetchweather', name);
         },
-        removelocation({commit, state}, name) {
+        removelocation ({commit, state}, name) {
           commit('REMOVE_LOCATION', name);
           this._vm.$ons.notification.toast({
             message: `${name} has been removed from your locations`,
