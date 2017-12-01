@@ -143,6 +143,11 @@ export default new Vuex.Store({
               }
             });
         },
+        refresh ({dispatch, state}) {
+          Object.entries(state.locations).forEach(([name, data]) => {
+            dispatch('fetchweather', name);
+          });
+        },
       },
     }
   },

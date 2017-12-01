@@ -9,6 +9,23 @@
       <div class="center">Onsen UI Vue - Weather</div>
     </v-ons-toolbar>
 
+    <v-ons-pull-hook
+      :action="onRefresh"
+      @changestate="pullingState = $event.state">
+      <span v-show="pullingState === 'initial'">
+        <v-ons-icon size="20" spin="false" icon="long-arrow-down" class="left" />
+        Pull to refresh
+      </span>
+      <span v-show="pullingState === 'preaction'">
+        <v-ons-icon size="20" spin="false" icon="long-arrow-up" class="left" />
+        Release
+      </span>
+      <span v-show="pullingState === 'action'">
+        <v-ons-icon size="20" spin="false" icon="refresh" class="left" />
+        Loading...
+      </span>
+    </v-ons-pull-hook>
+
     <v-ons-list>
       <v-ons-list-item
         v-for="location in locations"
@@ -61,6 +78,11 @@
 <script>
 export default {
   name: 'home',
+  data() {
+    return {
+      pullingState: 'initial',
+    }
+  },
   computed: {
     locations () {
       return this.$store.state.forecast.locations;
@@ -88,6 +110,13 @@ export default {
     },
     removeLocation (location) {
       this.$store.dispatch('forecast/removelocation', location.name);
+    },
+    onRefresh(done) {
+      // refresh all the forecasts
+      this.$store.dispatch('forecast/refresh');
+      // simulate a 1 second timeout to hide the pull hook
+      // this should be wait for all the forecasts
+      setTimeout(() => done(), 1000);
     },
   },
 }

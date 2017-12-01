@@ -43,6 +43,7 @@
             </div>
           </div>
         </div>
+        <forecast :location="location" />
       </div>
     </div>
   </v-ons-page>
