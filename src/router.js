@@ -2,8 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import store from '~/store'
-import HomePage from '~/components/HomePage.vue'
-import WeatherPage from '~/components/WeatherPage.vue'
+import HomePage from '~/pages/HomePage.vue'
+import WeatherPage from '~/pages/WeatherPage.vue'
 
 Vue.use(Router);
 

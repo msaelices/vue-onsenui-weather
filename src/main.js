@@ -8,7 +8,8 @@ import VueOnsen from 'vue-onsenui'
 import router from '~/router'
 import store from '~/store'
 import App from '~/App.vue'
-import { AddLocation, Forecast, WeatherPage, MenuPage, HomePage, WeatherIcon } from '~/components'
+import { AddLocation, Forecast, WeatherIcon } from '~/components'
+import { WeatherPage, MenuPage, HomePage } from '~/pages'
 
 Vue.config.productionTip = false
 
