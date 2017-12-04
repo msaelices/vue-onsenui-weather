@@ -2,8 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import store from '~/store'
-import HomePage from '~/pages/HomePage.vue'
-import WeatherPage from '~/pages/WeatherPage.vue'
+import { AddLocationPage, HomePage, WeatherPage } from '~/pages'
 
 Vue.use(Router);
 
@@ -18,6 +17,11 @@ const router = new Router({
           path: 'weather',
           name: 'Weather',
           component: WeatherPage,
+        },
+        {
+          path: 'addlocation',
+          name: 'AddLocation',
+          component: AddLocationPage,
         },
       ]
     }

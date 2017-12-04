@@ -8,15 +8,21 @@ import VueOnsen from 'vue-onsenui'
 import router from '~/router'
 import store from '~/store'
 import App from '~/App.vue'
-import { AddLocation, Forecast, WeatherIcon } from '~/components'
+import loader  from '~/lib-loader'
+import { Forecast, WeatherIcon } from '~/components'
 import { WeatherPage, MenuPage, HomePage } from '~/pages'
 
 Vue.config.productionTip = false
 
 Vue.use(VueOnsen)
 
+loader.load({
+  apiKey: 'AIzaSyCR8j38VbOGP8YDAtHx2jVqEirAbssAsK0',
+  version: '3',
+  libraries: ['places'],
+})
+
 Object.values([
-  AddLocation,
   Forecast,
   WeatherPage,
   MenuPage,
