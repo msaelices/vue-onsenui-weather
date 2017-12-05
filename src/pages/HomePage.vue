@@ -71,7 +71,11 @@
       </v-ons-list-item>
     </v-ons-list>
 
-    <add-location />
+    <v-ons-fab
+      position="bottom right"
+      @click="goToAddLocation">
+      <v-ons-icon icon="md-plus"></v-ons-icon>
+    </v-ons-fab>
   </v-ons-page>
 </template>
 
@@ -102,8 +106,10 @@ export default {
         params: {location: location}},
       );
     },
-    showAddLocation () {
-      this.showAddDialog = true;
+    goToAddLocation () {
+      this.$router.push({
+        name: 'AddLocation',
+      });
     },
     fetchWeather (location) {
       this.$store.dispatch('forecast/fetchweather', location.name);

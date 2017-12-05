@@ -2,29 +2,37 @@
   <div
     class="icon"
     :class="iconClass"
-    :style="{'background-color': backgroundColor, 'color': iconColor}">
-    <i class="wi" :class="'wi-owm-' + location.icon"></i>
+    :style="{height: height, width: width}">
+    <i
+      class="wi"
+      :class="'wi-owm-' + location.icon"
+      :style="{height: height, width: width, backgroundSize: backgroundSize}">
+    </i>
   </div>
 </template>
 
 <script>
-import { weatherCodeToColor } from '~/util';
-
 export default {
   name: 'weather-icon',
-  props: ['location', 'outline', 'iconClass'],
-  computed: {
-    iconColor () {
-      const { location, outline } = this;
-      return outline
-        ? weatherCodeToColor(location.icon) : 'white';
-    },
-    backgroundColor () {
-      const { location, outline } = this;
-      return outline
-        ? 'transparent' : weatherCodeToColor(location.icon);
-    },
+  props: {
+    location: Object,
+    outline: Boolean,
+    iconClass: String,
+    size: {
+      type: Number,
+      default: 64},
   },
+  computed: {
+    width () {
+      return `${this.size}px`
+    },
+    height () {
+      return `${this.size}px`
+    },
+    backgroundSize () {
+      return `${this.size}px ${this.size}px`
+    }
+  }
 }
 </script>
 
@@ -32,11 +40,16 @@ export default {
 .icon {
   color: #fff;
   text-align: center;
-  width: 36px;
-  height: 36px;
+  width: 64px;
+  height: 64px;
   line-height: 36px;
   border-radius: 6px;
   font-size: 16px;
+}
+.icon i {
+  width: 64px;
+  height: 64px;
+  background-size: 64px 64px;
 }
 </style>
 

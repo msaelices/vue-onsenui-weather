@@ -1,0 +1,87 @@
+.wi {
+  display: inline-block;
+}
+
+.wi-owm-200,
+.wi-owm-201,
+.wi-owm-202,
+.wi-owm-210,
+.wi-owm-211,
+.wi-owm-212,
+.wi-owm-221,
+.wi-owm-230,
+.wi-owm-231,
+.wi-owm-232 {
+  background: none, url(assets/animated-icons/thunder.svg) no-repeat;
+}
+
+.wi-owm-500,
+.wi-owm-701 {
+  background: none, url(assets/animated-icons/rainy-2.svg) no-repeat;
+}
+
+.wi-owm-300,
+.wi-owm-301 {
+  background: none, url(assets/animated-icons/rainy-4.svg) no-repeat;
+}
+
+
+.wi-owm-302,
+.wi-owm-310,
+.wi-owm-311,
+.wi-owm-312,
+.wi-owm-501,
+.wi-owm-502,
+.wi-owm-503,
+.wi-owm-504 {
+  background: none, url(assets/animated-icons/rainy-5.svg) no-repeat;
+}
+
+.wi-owm-302,
+.wi-owm-511,
+.wi-owm-520,
+.wi-owm-521,
+.wi-owm-522,
+.wi-owm-531,
+.wi-owm-612 {
+  background: none, url(assets/animated-icons/rainy-7.svg) no-repeat;
+}
+
+.wi-owm-600,
+.wi-owm-620 {
+  background: none, url(assets/animated-icons/snowy-2.svg) no-repeat;
+}
+
+.wi-owm-611,
+.wi-owm-612,
+.wi-owm-615,
+.wi-owm-616,
+.wi-owm-620 {
+  background: none, url(assets/animated-icons/snowy-1.svg) no-repeat;
+}
+
+.wi-owm-601 {
+  background: none, url(assets/animated-icons/snowy-5.svg) no-repeat;
+}
+
+.wi-owm-602 {
+  background: none, url(assets/animated-icons/snowy-6.svg) no-repeat;
+}
+
+.wi-owm-800 {
+  background: none, url(assets/animated-icons/day.svg) no-repeat;
+}
+
+.wi-owm-801 {
+  background: none, url(assets/animated-icons/cloudy-day-1.svg) no-repeat;
+}
+
+.wi-owm-802 {
+  background: none, url(assets/animated-icons/cloudy-day-2.svg) no-repeat;
+}
+
+.wi-owm-803,
+.wi-owm-804,
+.wi-owm-741 {
+  background: none, url(assets/animated-icons/cloudy-day-3.svg) no-repeat;
+}
