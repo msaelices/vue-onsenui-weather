@@ -114,6 +114,12 @@ export default new Vuex.Store({
           commit('ADD_LOCATION', name);
           // fetch location weather
           dispatch('fetchweather', name);
+
+          this._vm.$ons.notification.toast({
+            message: `${name} added to your locations`,
+            buttonLabel: 'Dismiss',
+            timeout: 5000
+          });
         },
         removelocation ({commit, state}, name) {
           commit('REMOVE_LOCATION', name);
