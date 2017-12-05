@@ -16,7 +16,16 @@ yarn build
 
 # execute linter
 yarn lint
+
+# build and deploy app into gh-pages
+yarn deploy
 ```
+
+## Online version
+
+As hybrid apps are essentially web apps, you can view the gh-pages version here:
+
+https://msaelices.github.io/vue-onsenui-weather/#/
 
 ## Run on Android
 
