@@ -23,6 +23,7 @@
           <weather-icon
             outline="true"
             iconClass="main-icon"
+            size="150"
             :location="location"></weather-icon>
         </div>
         <div class="forecast-details">
@@ -93,10 +94,12 @@ export default {
     line-height: 12px;
   }
   .main-icon {
-    font-size: 100px;
+    margin: 20px 0 0px 0;
+  }
+  .main-icon i {
     width: 100px;
     height: 100px;
-    margin: 20px 0 0px 0;
+    background-size: 100px 100px;
   }
   .forecast-details {
     width: 100%;
