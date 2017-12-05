@@ -9,7 +9,8 @@
     <div class="container">
       <v-ons-search-input
         v-model="query" debounce="500"
-        placeholder="Type something">
+        placeholder="Type something"
+        class="search">
       </v-ons-search-input>
       <v-ons-list>
         <v-ons-list-item
@@ -75,5 +76,8 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
+  }
+  .search {
+    width: 90%;
   }
 </style>
