@@ -7,7 +7,7 @@
 
     <v-ons-list-title>MENU</v-ons-list-title>
     <v-ons-list>
-      <v-ons-list-item v-for="item in menuItems" @click="goTo(item.page)" :key="item.link">
+      <v-ons-list-item v-for="item in menuItems" @click="goTo(item.route)" :key="item.link">
         <v-ons-icon fixed-width :icon="item.icon" class="left"></v-ons-icon>
         {{ item.label }}
       </v-ons-list-item>
@@ -25,19 +25,25 @@ export default {
         {
           label: 'Add location',
           icon: 'ion-plus',
-          page: null
+          route: 'AddLocation',
         },
         {
           label: 'Settings',
           icon: 'ion-gear-b',
-          page: null
+          route: null
         },
       ]
     }
   },
   methods: {
-    goTo (page) {
-      console.log(`go to page ${page}`);
+    goTo (route) {
+      if (route) {
+        this.$store.commit('splitter/toggle');
+
+        this.$router.push({
+          name: route,
+        });
+      }
     }
   }
 }
