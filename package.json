@@ -7,8 +7,7 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --hot --host 0.0.0.0 --port 8080",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "build:watch": "cross-env NODE_ENV=production WEBPACK_WATCH=true webpack --progress --hide-modules",
-    "demo:index": "mv www/index.html www/main.html && sed -i 's/index\\.html/main\\.html/' www/demo.html && mv www/demo.html www/index.html",
-    "deploy": "npm run demo:index && ghpages -p www",
+    "deploy": "yarn build && git commit www -m \"Deploy\" && git subtree push --prefix www origin gh-pages",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
