@@ -146,12 +146,6 @@ export default new Vuex.Store({
             .then((data) => {
               if (data) {
                 commit('SET_WEATHER', data);
-
-                this._vm.$ons.notification.toast({
-                  message: `${name} added to your locations`,
-                  buttonLabel: 'Dismiss',
-                  timeout: 5000
-                });
               }
             });
         },
