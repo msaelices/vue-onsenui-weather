@@ -21,9 +21,9 @@
         </div>
         <div>
           <weather-icon
-            outline="true"
             iconClass="main-icon"
-            size="150"
+            :size="150"
+            :outline="true"
             :location="location"></weather-icon>
         </div>
         <div class="forecast-details">
