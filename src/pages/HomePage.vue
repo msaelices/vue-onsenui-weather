@@ -70,8 +70,8 @@
         </div>
       </v-ons-list-item>
     </v-ons-list>
-    <div v-if="!fetchedAny && !hasLocations" class="no-results">
-      There are no locations. Please
+    <div v-show="showAddMessage && !hasLocations" class="no-results">
+      There are no locations
       <v-ons-button @click="goToAddLocation">
         <v-ons-icon icon="md-plus"></v-ons-icon> add one
       </v-ons-button>
@@ -97,7 +97,7 @@ export default {
   },
   computed: {
     ...mapState({
-      fetchedAny: state => state.forecast.fetchedAny,
+      showAddMessage: state => { console.log(state.forecast.showAddMessage); return state.forecast.showAddMessage},
       locations: state => state.forecast.locations,
       hasLocations: state => Object.keys(state.forecast.locations).length > 0,
     }),

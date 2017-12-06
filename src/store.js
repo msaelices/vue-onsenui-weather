@@ -71,23 +71,25 @@ export default new Vuex.Store({
       namespaced: true,
       state: {
         locations: {},
-        fetchedAny: false,
+        isFetching: false,
+        showAddMessage: false,
       },
       mutations: {
         SET_FETCHING (state, name) {
+          state.isFetching = true;
           let location = state.locations[name];
           location.isFetching = true;
           state.locations = {...state.locations, [location.name]: location};
         },
         SET_INVALID (state, name) {
-          state.fetchedAny = true;
+          state.isFetching = false;
           let location = state.locations[name];
           location.isInvalid = true;
           location.isFetching = false;
           state.locations = {...state.locations, [location.name]: location};
         },
         SET_WEATHER (state, payload) {
-          state.fetchedAny = true;
+          state.isFetching = false;
           const location = Object.assign(
             {isInvalid: false, isFetching: false},
              payload);
@@ -108,6 +110,9 @@ export default new Vuex.Store({
           // refreshed
           Vue.delete(state.locations, name);
         },
+        SHOW_ADD_MESSAGE (state) {
+          state.showAddMessage = true;
+        }
       },
       actions: {
         addlocation ({commit, dispatch, state}, name) {
@@ -158,7 +163,10 @@ export default new Vuex.Store({
               }
             });
         },
-        refresh ({dispatch, state}) {
+        refresh ({dispatch, commit, state}) {
+          if (Object.keys(state.locations).length === 0) {
+            commit('SHOW_ADD_MESSAGE');
+          }
           Object.entries(state.locations).forEach(([name, data]) => {
             dispatch('fetchweather', name);
           });
