@@ -70,6 +70,12 @@
         </div>
       </v-ons-list-item>
     </v-ons-list>
+    <div v-if="!fetchedAny && !hasLocations" class="no-results">
+      There are no locations. Please
+      <v-ons-button @click="goToAddLocation">
+        <v-ons-icon icon="md-plus"></v-ons-icon> add one
+      </v-ons-button>
+    </div>
 
     <v-ons-fab
       position="bottom right"
@@ -80,6 +86,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'home',
   data() {
@@ -88,15 +96,15 @@ export default {
     }
   },
   computed: {
-    locations () {
-      return this.$store.state.forecast.locations;
-    },
+    ...mapState({
+      fetchedAny: state => state.forecast.fetchedAny,
+      locations: state => state.forecast.locations,
+      hasLocations: state => Object.keys(state.forecast.locations).length > 0,
+    }),
   },
   mounted () {
-    // TODO: Find out a better way to do refresh the locations
-    // computed value from the persisted locations in the store
     setTimeout(() => {
-      this.$forceUpdate();
+      this.$store.dispatch('forecast/refresh');
     }, 100);
   },
   methods: {
@@ -149,5 +157,9 @@ export default {
 
 .error {
   color: red;
+}
+
+.no-results {
+  margin: 20px;
 }
 </style>

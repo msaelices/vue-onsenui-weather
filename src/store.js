@@ -65,6 +65,7 @@ export default new Vuex.Store({
       namespaced: true,
       state: {
         locations: {},
+        fetchedAny: false,
       },
       mutations: {
         SET_FETCHING (state, name) {
@@ -73,15 +74,17 @@ export default new Vuex.Store({
           state.locations = {...state.locations, [location.name]: location};
         },
         SET_INVALID (state, name) {
+          state.fetchedAny = true;
           let location = state.locations[name];
           location.isInvalid = true;
           location.isFetching = false;
           state.locations = {...state.locations, [location.name]: location};
         },
         SET_WEATHER (state, payload) {
+          state.fetchedAny = true;
           const location = Object.assign(
             {isInvalid: false, isFetching: false},
-            payload);
+             payload);
           state.locations = {...state.locations, [location.name]: location};
         },
         ADD_LOCATION (state, name) {
