@@ -22,12 +22,9 @@ loader.load({
   libraries: ['places'],
 })
 
-Object.values([
-  Forecast,
-  WeatherPage,
-  MenuPage,
-  HomePage,
-  WeatherIcon]).forEach(c => Vue.component(c.name, c));
+for (let c of [Forecast, WeatherPage, MenuPage, HomePage, WeatherIcon]) {
+  Vue.component(c.name, c);
+}
 
 /* eslint-disable no-new */
 new Vue({
