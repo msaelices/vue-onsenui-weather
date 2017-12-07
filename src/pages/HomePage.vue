@@ -97,7 +97,7 @@ export default {
   },
   computed: {
     ...mapState({
-      showAddMessage: state => { console.log(state.forecast.showAddMessage); return state.forecast.showAddMessage},
+      showAddMessage: state => state.forecast.showAddMessage,
       locations: state => state.forecast.locations,
       hasLocations: state => Object.keys(state.forecast.locations).length > 0,
     }),
