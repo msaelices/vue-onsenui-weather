@@ -63,6 +63,15 @@ cordova run android
 If you have more feature ideas or you want to report issues, please add them on https://github.com/msaelices/vue-onsenui-weather/issues
 
 
+## Contributing
+
+1. Fork it ( https://github.com/msaelices/vue-onsenui-weather/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+
 ## Notes
 
 Based on this [react version](https://github.com/argelius/react-onsenui-redux-weather), but with more features and built using Vue and Vuex, instead of React and Redux.
