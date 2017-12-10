@@ -12,7 +12,8 @@
   "plugins": [
     ["babel-plugin-root-import", {
       "rootPathSuffix": "src"
-    }]
+    }],
+    "babel-plugin-transform-runtime"
   ],
   "env": {
     "test": {
