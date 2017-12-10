@@ -13,5 +13,6 @@ export { default as VOnsSearchInput } from 'vue-onsenui/esm/components/VOnsSearc
 export { default as VOnsSplitter } from 'vue-onsenui/esm/components/VOnsSplitter'
 export { default as VOnsSplitterContent } from 'vue-onsenui/esm/components/VOnsSplitterContent'
 export { default as VOnsSplitterSide } from 'vue-onsenui/esm/components/VOnsSplitterSide'
+export { default as VOnsToast } from 'vue-onsenui/esm/components/VOnsToast'
 export { default as VOnsToolbar } from 'vue-onsenui/esm/components/VOnsToolbar'
 export { default as VOnsToolbarButton } from 'vue-onsenui/esm/components/VOnsToolbarButton'
