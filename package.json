@@ -8,6 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "build:watch": "cross-env NODE_ENV=production WEBPACK_WATCH=true webpack --progress --hide-modules",
     "deploy": "yarn build && git commit www -m \"Deploy\" && git subtree push --prefix www origin gh-pages",
+    "serve": "cross-env NODE_ENV=production webpack-dev-server --host 0.0.0.0 --port 8080 --content-base www/",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
