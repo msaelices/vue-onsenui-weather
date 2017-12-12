@@ -10,7 +10,9 @@
       <v-ons-splitter-content>
         <v-ons-navigator swipeable swipe-target-width="200px"
           :page-stack="pageStack"
-          :pop-page="goBack">
+          :pop-page="goBack"
+          @postpush="togglePagesVisibility"
+          @postpop="togglePagesVisibility">
         </v-ons-navigator>
       </v-ons-splitter-content>
     </v-ons-splitter>
@@ -39,7 +41,15 @@ export default {
     goBack () {
       // Go to the parent route component
       this.$router.push({ name: this.$route.matched[this.$route.matched.length - 2].name });
-    }
+    },
+    togglePagesVisibility(event) {
+      // OnsenUI uses visibility hidden styles to show/hide pages
+      // this still keep the page in the render tree and SVG animations
+      // are still considered by the browser.
+      // Set display to none/block instead to speed up SVG rendering
+      event.enterPage.style.display = 'block';
+      event.leavePage.style.display = 'none';
+    },
   },
 }
 </script>
